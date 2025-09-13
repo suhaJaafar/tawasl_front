@@ -1,0 +1,8 @@
+{
+  "/page": "app/page.js",
+  "/blog-details/[id]/page": "app/blog-details/[id]/page.js",
+  "/about/page": "app/about/page.js",
+  "/blog-grid/page": "app/blog-grid/page.js",
+  "/room-list/page": "app/room-list/page.js",
+  "/contact/page": "app/contact/page.js"
+}
