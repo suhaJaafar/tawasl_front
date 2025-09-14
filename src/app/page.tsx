@@ -1,12 +1,28 @@
+import Accommodations from './accommodations/accommodations';
+import Banner from './banner/banner';
+import Deluxe from './deluxe/deluxe';
+import Feature from './feature/feature';
+import Footer from './footer/footer';
+import HeaderOne from './header/HeaderOne';
+import ScrollToTopButton from './scroll-to-top/scrollToTop';
+import Testimonial from './testimonial/testimonial';
+import SEO from '@/components/seo';
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-          <div>
-            <h1>منظمة تواصل</h1>
-        </div>
-      </main>
-    </div>
-  );
+	return (
+		<>
+			<SEO pageTitle='Home Default' />
+			<HeaderOne />
+			<Banner />
+			<Accommodations />
+			<Deluxe />
+			{/* <Videoarea /> */}
+			{/* <Services /> */}
+			<Feature />
+			<Testimonial />
+			{/* <Blog /> */}
+			<Footer />
+			<ScrollToTopButton />
+		</>
+	);
 }
