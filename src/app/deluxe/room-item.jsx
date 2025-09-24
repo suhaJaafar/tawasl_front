@@ -1,20 +1,20 @@
-import Link from 'next/link';
+'use client';
 
-const RoomItem = ({ project = {} }) => {
-	const { price, image, title = [] } = project;
+import Link from 'next/link';
+import React from 'react';
+
+const RoomItem = ({ program }) => {
+	if (!program) return null;
 	return (
 		<>
 			<div className='deluxe__area-item-image'>
-				<img className='img__full' src={image} alt='image' />
+				<img className='img__full' src={program.image?.url} alt='image' />
 			</div>
 			<div className='deluxe__area-item-content'>
-				{/* <h6>
-					<span>${price}</span> / Night
-				</h6> */}
 				<h4>
-					<Link href='/room-details'>{title}</Link>
+					<Link href='/room-details'>{program.title}</Link>
 				</h4>
-				<Link className='simple-btn' href='/contact'>
+				<Link className='simple-btn' href={`/blog-details/${program.id}`}>
 					<i className='far fa-chevron-right'></i>Read More
 				</Link>
 			</div>
