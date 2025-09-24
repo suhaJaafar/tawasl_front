@@ -4,8 +4,21 @@ import Footer from '../footer/footer';
 import HeaderOne from '../header/HeaderOne';
 import ScrollToTopButton from '../scroll-to-top/scrollToTop';
 import Bloggridcontainer from './blog-grid-container';
+import { fetchBlogs } from '@/utils/fetchBlogs';
 
-const Bloggrid = () => {
+export default async function Bloggrid() {
+	let blogs = [];
+	let result = {};
+	try {
+		const response = await fetch('http://localhost:3001/programs');
+		result = await response.json();
+		// Pass only the array:
+		console.log('Fetching blogs from API...');
+		blogs = await fetchBlogs();
+		console.log('Fetched blogs:', blogs);
+	} catch (e) {
+		console.error('Error fetching blogs:', e);
+	}
 	return (
 		<>
 			<SEO pageTitle='Our Programs' />
@@ -15,11 +28,9 @@ const Bloggrid = () => {
 				innerTitle='Our Programs'
 				bgImage='/img/banner/our_programs.jpg'
 			/>
-			<Bloggridcontainer />
+			<Bloggridcontainer blogs={result.data} />
 			<Footer />
 			<ScrollToTopButton />
 		</>
 	);
-};
-
-export default Bloggrid;
+}

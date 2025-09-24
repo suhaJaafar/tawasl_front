@@ -7166,7 +7166,7 @@ Page
 	height: 100%;
 	z-index: -1;
 	background: var(--heading-color);
-	opacity: 0.8;
+	opacity: 0.4;
 }
 .page__banner-title {
 	text-align: center;

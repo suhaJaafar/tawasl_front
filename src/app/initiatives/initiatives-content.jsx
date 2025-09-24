@@ -1,42 +1,27 @@
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaArrowRight } from 'react-icons/fa6';
+import { fetchInitiatives } from '../../utils/fetchInitiative';
 
 export default function InitiativesContent() {
-	const initiatives = [
-		{
-			id: 1,
-			title: 'Government Transparency Program',
-			description:
-				'Monitoring and evaluating government programs to ensure transparency and accountability in public sector operations.',
-			image: '/img/features/our_initiatives.jpg',
-			link: '/initiatives/transparency',
-		},
-		{
-			id: 2,
-			title: 'Public Policy Research',
-			description:
-				'Conducting independent research on public policies and their impact on communities and economic development.',
-			image: '/img/banner/our_programs.jpg',
-			link: '/initiatives/policy-research',
-		},
-		{
-			id: 3,
-			title: 'Community Engagement',
-			description:
-				'Building bridges between citizens and government through community outreach and engagement programs.',
-			image: '/img/banner/our_programs.jpg',
-			link: '/initiatives/community-engagement',
-		},
-		{
-			id: 4,
-			title: 'Innovation in Governance',
-			description:
-				'Promoting innovative approaches to governance through technology and modern administrative practices.',
-			image: '/img/banner/our_programs.jpg',
-			link: '/initiatives/innovation',
-		},
-	];
+	const [initiatives, setInitiatives] = useState([]);
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(null);
+	const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+	console.log('ENV URL:', apiUrl);
+
+	useEffect(() => {
+		fetchInitiatives()
+			.then((data) => {
+				setInitiatives(data.data || []);
+				setLoading(false);
+			})
+			.catch((err) => {
+				setError(err.message);
+				setLoading(false);
+			});
+	}, []);
 
 	return (
 		<div className='initiatives__area section-padding'>
@@ -59,72 +44,95 @@ export default function InitiativesContent() {
 
 				{/* Initiatives Grid */}
 				<div className='row'>
-					{initiatives.map((initiative, index) => (
-						<div
-							key={initiative.id}
-							className='col-xl-6 col-lg-6 col-md-12 mb-30'
-						>
+					{loading && (
+						<div className='col-12 text-center'>
+							<p>Loading initiatives...</p>
+						</div>
+					)}
+					{error && (
+						<div className='col-12 text-center text-danger'>
+							<p>{error}</p>
+						</div>
+					)}
+					{!loading &&
+						!error &&
+						initiatives.map((initiative, index) => (
 							<div
-								className={`initiatives__area-item ${
-									index % 2 === 0 ? 'bg-left' : 'bg-right'
-								}`}
+								key={initiative.id}
+								className='col-xl-6 col-lg-6 col-md-12 mb-30'
 							>
-								<div className='row align-items-center'>
-									{index % 2 === 0 ? (
-										<>
-											<div className='col-xl-6 col-lg-6'>
-												<div className='initiatives__area-item-image'>
-													<Image
-														src={initiative.image}
-														alt={initiative.title}
-														width={400}
-														height={300}
-													/>
+								<div
+									className={`initiatives__area-item ${
+										index % 2 === 0 ? 'bg-left' : 'bg-right'
+									}`}
+								>
+									<div className='row align-items-center'>
+										{index % 2 === 0 ? (
+											<>
+												<div className='col-xl-6 col-lg-6'>
+													<div className='initiatives__area-item-image'>
+														<Image
+															src={initiative.image?.url}
+															alt={initiative.title}
+															width={400}
+															height={300}
+														/>
+													</div>
 												</div>
-											</div>
-											<div className='col-xl-6 col-lg-6'>
-												<div className='initiatives__area-item-content'>
-													<h4>{initiative.title}</h4>
-													<p>{initiative.description}</p>
-													<Link
-														className='theme-border-btn'
-														href={initiative.link}
-													>
-														Learn More <FaArrowRight className='ml-10' />
-													</Link>
+												<div className='col-xl-6 col-lg-6'>
+													<div className='initiatives__area-item-content'>
+														<h4>{initiative.title}</h4>
+														{/* if description is long its bigger than 100 char so view 3 dots ..., other wise dont view the 3 dots , also truncate it */}
+														<p>
+															{initiative.description.length > 100
+																? initiative.description.slice(0, 100) + '...'
+																: initiative.description}
+														</p>
+
+														<Link
+															className='theme-border-btn'
+															href={`/initiatives/${initiative.id}`}
+														>
+															Learn More <FaArrowRight className='ml-10' />
+														</Link>
+													</div>
 												</div>
-											</div>
-										</>
-									) : (
-										<>
-											<div className='col-xl-6 col-lg-6 order-last order-lg-first'>
-												<div className='initiatives__area-item-content'>
-													<h4>{initiative.title}</h4>
-													<p>{initiative.description}</p>
-													<Link
-														className='theme-border-btn'
-														href={initiative.link}
-													>
-														Learn More <FaArrowRight className='ml-10' />
-													</Link>
+											</>
+										) : (
+											<>
+												<div className='col-xl-6 col-lg-6 order-last order-lg-first'>
+													<div className='initiatives__area-item-content'>
+														<h4>{initiative.title}</h4>
+														{/* if description is long its bigger than 100 char so view 3 dots ..., other wise dont view the 3 dots , also truncate it */}
+														<p>
+															{initiative.description.length > 100
+																? initiative.description.slice(0, 100) + '...'
+																: initiative.description}
+														</p>{' '}
+														<Link
+															className='theme-border-btn'
+															href={`/initiatives/${initiative.id}`}
+														>
+															Learn More <FaArrowRight className='ml-10' />
+														</Link>
+													</div>
 												</div>
-											</div>
-											<div className='col-xl-6 col-lg-6'>
-												<div className='initiatives__area-item-image'>
-													<Image
-														src={initiative.image}
-														alt={initiative.title}
-														width={400}
-														height={300}
-													/>
+												<div className='col-xl-6 col-lg-6'>
+													<div className='initiatives__area-item-image'>
+														<Image
+															src={initiative.image?.url}
+															alt={initiative.title}
+															width={400}
+															height={300}
+														/>
+													</div>
 												</div>
-											</div>
-										</>
-									)}
+											</>
+										)}
+									</div>
 								</div>
 							</div>
-						</div>
-					))}
+						))}
 				</div>
 
 				{/* Call to Action */}

@@ -12,8 +12,8 @@ export default function Feature() {
 							<Image
 								alt=''
 								src='/img/features/what_do_we_do.jpg'
-								width={600}
-								height={600}
+								width={200}
+								height={50}
 							/>
 						</div>
 					</div>
