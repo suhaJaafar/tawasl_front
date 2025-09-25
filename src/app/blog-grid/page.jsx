@@ -8,11 +8,7 @@ import { fetchBlogs } from '@/utils/fetchBlogs';
 
 export default async function Bloggrid() {
 	let blogs = [];
-	let result = {};
 	try {
-		const response = await fetch('http://localhost:3001/programs');
-		result = await response.json();
-		// Pass only the array:
 		console.log('Fetching blogs from API...');
 		blogs = await fetchBlogs();
 		console.log('Fetched blogs:', blogs);
@@ -28,7 +24,7 @@ export default async function Bloggrid() {
 				innerTitle='Our Programs'
 				bgImage='/img/banner/our_programs.jpg'
 			/>
-			<Bloggridcontainer blogs={result.data} />
+			<Bloggridcontainer blogs={blogs.data || blogs} />
 			<Footer />
 			<ScrollToTopButton />
 		</>
