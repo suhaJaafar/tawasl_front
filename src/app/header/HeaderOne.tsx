@@ -71,9 +71,6 @@ export default function HeaderOne({ variant }: HeaderOneProps) {
 										<Link href='/our_programs'>Our Programs</Link>
 									</li> */}
 									<li>
-										<Link href='/blog-grid'>blog-grid</Link>
-									</li>
-									<li>
 										<Link href='/programs'>Our Programs</Link>
 									</li>
 									<li>

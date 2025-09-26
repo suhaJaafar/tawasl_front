@@ -31,12 +31,29 @@ export default function ProgramsContent() {
 						<div className='blog__two-item'>
 							<div className='blog__two-item-image'>
 								<div className='initiatives__area-item-image'>
-									<Image
-										src={data.image?.url}
-										alt={data.title}
-										width={400}
-										height={300}
-									/>
+									{data.image?.url ? (
+										<Image
+											src={data.image.url}
+											alt={data.title}
+											width={400}
+											height={300}
+											style={{ objectFit: 'cover' }}
+										/>
+									) : (
+										<div
+											style={{
+												width: '400px',
+												height: '300px',
+												backgroundColor: '#f0f0f0',
+												display: 'flex',
+												alignItems: 'center',
+												justifyContent: 'center',
+												color: '#666',
+											}}
+										>
+											No Image
+										</div>
+									)}
 								</div>
 								<div className='blog__two-item-image-date'>
 									<h5>{data.date}</h5>
