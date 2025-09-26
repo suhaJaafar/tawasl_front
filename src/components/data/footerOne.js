@@ -7,6 +7,8 @@ const footerOne = {
 	widgetMenus: [
 		{ link: '/about', title: 'About Us' },
 		{ link: '/blog-grid', title: 'Progrms' },
+		{ link: '/programs', title: 'Progrms' },
+
 		{ link: '/contact', title: 'Contact Us' },
 	],
 	title_3: 'Gallery',
