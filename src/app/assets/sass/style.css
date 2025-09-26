@@ -5031,6 +5031,8 @@ Deluxe
 }
 .deluxe__area-item-image {
 	position: relative;
+	height: 300px;
+	overflow: hidden;
 }
 .deluxe__area-item-image img {
 	min-height: 357px;
