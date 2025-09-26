@@ -8,7 +8,7 @@ export default function Feature() {
 			<div className='container'>
 				<div className='row align-items-center bg-left mb-60 flex justify-between'>
 					<div className='col-xl-6 col-lg-6'>
-						<div className='feature__area-image border-2 border-[#0a3d73]'>
+						<div className='feature__area-image border-2 border-[#0a3d735b]'>
 							<Image
 								alt=''
 								src='/img/features/what_do_we_do.jpg'
@@ -18,10 +18,10 @@ export default function Feature() {
 						</div>
 					</div>
 					<div className='col-xl-6 col-lg-6'>
-						<div className='feature__area-left'>
+						<div className='feature__area-left text-[#0a3d73]'>
 							<div className='feature__area-left-title'>
 								<span className='subtitle__one'>Our Work</span>
-								<h2>What Do We Do?</h2>
+								<h2 className='text-[#0a3d73]'>What Do We Do?</h2>
 								<p>
 									Empowering transparency and progress through independent
 									programs and government monitoring. We bridge private insights
@@ -94,7 +94,7 @@ export default function Feature() {
 							<div className='feature__area-left-title'>
 								<span className='subtitle__one'>Our Initiatives</span>
 								<h2>Initiatives</h2>
-								<p>
+								<p className='text-[#0a3d73]'>
 									Our initiatives drive impactful change through targeted
 									programs, activities, and partnerships that promote
 									accountability and innovation in public governance.

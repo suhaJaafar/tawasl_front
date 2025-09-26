@@ -5,8 +5,8 @@ const Accommodationstext = () => {
 		<div className='col-xl-5 col-lg-6 lg-mb-50'>
 			<div className='accommodations__area-title'>
 				<span className='subtitle__one'>about us</span>
-				<h2>Welcome Our Org.</h2>
-				<p>
+				<h2 className='text-[#0a3d73]'>Welcome Our Org.</h2>
+				<p className='text-[#0a3d73]'>
 					The organization seeks to create an informed generation and promote
 					societal peace, and to contribute to building good governance by
 					issuing reliable and accurate data and indicators within a scientific

@@ -69,7 +69,7 @@ const Deluxe = () => {
 						<div className='col-xl-5'>
 							<div className='deluxe__area-title'>
 								<span className='subtitle__one'>Our Programms</span>
-								<h2>Our Programs</h2>
+								<h2 className='text-[#0a3d73]'>Our Programs</h2>
 							</div>
 						</div>
 						<div className='col-xl-7'>

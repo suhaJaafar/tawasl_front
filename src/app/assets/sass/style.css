@@ -4063,6 +4063,7 @@ Accommodations
 .accommodations__area-title h2 {
 	margin-bottom: 14px;
 	max-width: 425px;
+	color: #0a3d73;
 }
 .accommodations__area-title p {
 	margin-bottom: 55px;
@@ -5318,10 +5319,16 @@ Deluxe Two
 		margin: 0;
 	}
 }
+.deluxe__area-title h2 {
+	color: #0a3d73 !important;
+}
 @media (max-width: 1199px) {
 	.deluxe__area-title {
 		text-align: center;
 		margin-bottom: 40px;
+	}
+	.deluxe__area-title h2 {
+		color: #0a3d73 !important;
 	}
 	.deluxe__area-btn {
 		text-align: center;
@@ -5927,6 +5934,7 @@ Feature
 }
 .feature__area-left-title h2 {
 	margin-bottom: 14px;
+	color: #0a3d73;
 }
 .feature__area-left-title p {
 	margin-bottom: 55px;
