@@ -2,13 +2,24 @@
 
 import Link from 'next/link';
 import React from 'react';
+import Image from 'next/image';
 
 const RoomItem = ({ program }) => {
 	if (!program) return null;
 	return (
 		<>
 			<div className='deluxe__area-item-image'>
-				<img className='img__full' src={program.image?.url} alt='image' />
+				{program.image?.url ? (
+					<Image
+						src={program.image.url}
+						alt={program.title}
+						width={700}
+						height={300}
+						style={{ objectFit: 'cover' }}
+					/>
+				) : (
+					<div></div>
+				)}
 			</div>
 			<div className='deluxe__area-item-content'>
 				<h4>
